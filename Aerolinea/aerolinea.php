@@ -1,6 +1,6 @@
 <?php
 	echo "hola que tal ";
-	echo "<h1>HOLAAA WILLFREDOOOO</h1>";
+	echo "<h1>HOLAAA WILLFREDOOOO     </h1>";
 	$i = 100;
 	while ($i <= 200) {
 
