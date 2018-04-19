@@ -14,7 +14,7 @@
     </style>
 
 <center>
-
+<?php
 //formulari
 
   $sql="SELECT IATA FROM aerportsdefinitiu";
@@ -25,20 +25,20 @@
 		include("errorinclude.php");
 	}
 
-  <div class="contformhead">LOGIN INFO</div>
-<form action= "selectdb.php" method=GET class="contform">
+echo "<form action= 'DataRequest.php' method=GET>";
 
-	Salida<br><br>
+	echo "Salida<br><br>";
   echo "<option value=''>Escoge un aeropuerto</option>";
 	while ($row = mysql_fetch_array($result)) {
 		echo "<option value='".$row[0]."'>".$row[0]."</option>";
 	}
-	Llegada<br><br>
+	echo "Llegada<br><br>";
   echo "<option value=''>Escoge un aeropuerto</option>";
   while ($row = mysql_fetch_array($result)) {
     echo "<option value='".$row[0]."'>".$row[0]."</option>";
   }
 
-	<table><tr><td><input type=submit value=LOGIN></td></form></td></tr></table>
+	echo "<table><tr><td><input type=submit value=LOGIN></td></form></td></tr></table>";
 
-</center>
+echo"</center>";
+?>

@@ -7,7 +7,7 @@
 	 readfile("StructureOnly.csv");
 
 
-
+	 //hola que ase 
 	 //connection to bd
 
 	 $link = mysqli_connect($_SESSION['ip'], $_SESSION['username'], $_SESSION['password']);
