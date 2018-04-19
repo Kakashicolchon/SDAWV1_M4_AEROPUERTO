@@ -28,12 +28,12 @@
 echo "<form action= 'DataRequest.php' method=GET>";
 
 	echo "Salida<br><br>";
-  echo "<option value=''>Escoge un aeropuerto</option>";
+  echo "<option value=''>Escoja un aeropuerto</option>";
 	while ($row = mysql_fetch_array($result)) {
 		echo "<option value='".$row[0]."'>".$row[0]."</option>";
 	}
 	echo "Llegada<br><br>";
-  echo "<option value=''>Escoge un aeropuerto</option>";
+  echo "<option value=''>Escoja un aeropuerto</option>";
   while ($row = mysql_fetch_array($result)) {
     echo "<option value='".$row[0]."'>".$row[0]."</option>";
   }
