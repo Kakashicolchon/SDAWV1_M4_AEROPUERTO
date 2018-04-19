@@ -1,0 +1,57 @@
+https://(ip)/datarequest.php?AS=BCN&AA=
+
+<!DOCTYPE vols [
+<!ELEMENT vol (AS, AA, DS, DA, HS, HA, DU, CO, IN, AD, PR)>
+<!ELEMENT AS (#PCDATA)>
+<!ELEMENT AA (#PCDATA)>
+<!ELEMENT DS (#PCDATA)>
+<!ELEMENT DA (#PCDATA)>
+<!ELEMENT HS (#PCDATA)>
+<!ELEMENT HA (#PCDATA)>
+<!ELEMENT DU (#PCDATA)>
+<!ELEMENT CO (#PCDATA)>
+<!ELEMENT IN (#PCDATA)>
+<!ELEMENT AD (#PCDATA)>
+<!ELEMENT PR (#PCDATA)>
+]>
+<vols>
+	<vol>
+		<AS> BRC </AS>
+		<AA> NRT </AA>
+		<DS> 02/06/18 </DS>
+		<DA> 03/06/18 </DA>
+		<HS> 7:00 </HS>
+		<HA> 12:25 </HA>
+		<DU> 1.25 </DU>
+		<CO> PELIPER FLY </CO>
+		<AD> 2 </AD>
+		<IN> 3 </IN>
+		<PR> 1800 </PR>
+	</vol>
+	<vol>
+		<AS> BCN </AS>
+		<AA> MAD </AA>
+		<DS> 13/05/18 </DS>
+		<DA> 13/05/18 </DA>
+		<HS> 11:00 </HS>
+		<HA> 12:25 </HA>
+		<DU> 1.25 </DU>
+		<CO> PELIPER FLY </CO>
+		<AD> 1 </AD>
+		<IN> 2 </IN>
+		<PR> 298 </PR>
+	</vol>
+	<vol>
+		<AS> MAD </AS>
+		<AA> CDG </AA>
+		<DS> 16/04/18 </DS>
+		<DA> 16/04/18 </DA>
+		<HS> 9:45 </HS>
+		<HA> 12:15 </HA>
+		<DU> 2.30 </DU>
+		<CO> PELIPER PLY </CO>
+		<AD> 0 </AD>
+		<IN> 2 </IN>
+		<PR> 500 </PR>
+	</vol>
+</vols>

@@ -1,5 +1,5 @@
 <?php
-	echo "hola que tal ";
+	echo "hola que tal "
 	echo "<h1>HOLAAA Aaron   </h1>";
 	$i = 100;
 	while ($i <= 200) {
@@ -13,7 +13,5 @@
 	do {
 		echo "Willy Dowhile: " . $i++ . "<br>";
 	} while ($i<=200);
+	<
 ?>
-
-99o879'09tyfjgj
-hjgyjhgfhgjghjghghgh
