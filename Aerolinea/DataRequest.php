@@ -1,31 +1,42 @@
 <?php
-     session_start();
+   session_start();
 	 error_reporting(E_PARSE |E_ERROR);
-     header("Content-type: text/xml");
+   header("Content-type: text/xml");
 	 header('Content-Disposition: attachment; filename='.$_SESSION['basedades'].'|'.$_SESSION['table'].'|'.'AmbDades'.'.xml');
 	 header('Pragma:no-cache');
 	 readfile("StructureOnly.csv");
 
 
-	 //hola que ase 
+
+
+
+
+
+   //Comprobar que te pasan todos los parámetros.
+   //$_GET['']
+   //http://ip/datarequest.php?AS=BCN&AA=GRD&DS=01-01-01&DA=04-01-01&IN=3&AD=3
+
 	 //connection to bd
 
-	 $link = mysqli_connect($_SESSION['ip'], $_SESSION['username'], $_SESSION['password']);
+	 $link = mysqli_connect('localhost', 'root', ''); //poner datos del toni
 			if (!$link) {
-			die('Could not connect: ' . mysqli_error());
+			die('Could not connect: ' . mysqli_error($link));
 			}
-	//echo "---->".$_SESSION['basedades']."----->";
-	$db_selected = mysqli_select_db($link,$_SESSION['basedades']);
-	if (!$db_selected) {
-		die ('Can\'t use mydb : ' . mysqli_error());
-	}
 
-	$sql="desc ".$_SESSION['table'];
+
+
+	//echo "---->".$_SESSION['basedades']."----->";
+	$db_selected = mysqli_select_db($link,cercador);
+	if (!$db_selected) {
+		die ('Can\'t use mydb : ' . mysqli_error($link));
+	}
+//Sentencia sql que demana els vols.
+	$sql="desc ".aeroportsdefinitiu;
 		//echo $sql;
 
 	$result = mysqli_query($link,$sql);
 	if (!$result) {
-		die('Invalid query: ' . mysqli_error());
+		die('Invalid query: ' . mysqli_error($link));
 	}
 
 	  //calcular el numero de camps que té la taula
@@ -34,9 +45,9 @@
     echo "<?xml version='1.0'?>";
 	echo "\r\n";
 
-	echo "<!DOCTYPE ".$_SESSION['table']."[";
+	echo "\t<!DOCTYPE ".aeroportsdefinitiu."[";
 	echo "\r\n";
-	echo "\t"."<!ELEMENT registre (";
+	echo "\t"."<!ELEMENT vol (";
 	$result=mysqli_query($link,$sql);
 	$cmpt=0;
 	while ($row = mysqli_fetch_array($result)) {
@@ -69,8 +80,8 @@
 	echo "<".$_SESSION['table'].">";
 	echo "\r\n";
 
-	//inserci� dels registres de la taula.
-	$sql="SELECT * FROM ".$_SESSION['table'];
+	//inserció dels registres de la taula.
+	$sql="SELECT * FROM ".aeroportsdefinitiu;
 		//echo $sql;
 
 	$result = mysqli_query($link,$sql);
@@ -80,7 +91,7 @@
 	$result = mysqli_query($link,$sql);
 	while ($row = mysqli_fetch_array($result)) {
 
-		echo "\t"."<registre>";
+		echo "\t"."<vol>";
 		echo "\r\n";
 
 		//escriurem tots els camps del registre
@@ -92,7 +103,7 @@
 			echo "\r\n";
 		}
 
-		echo "\t"."</registre>";
+		echo "\t"."</vol>";
 		echo "\r\n";
 	}
 	echo "</".$_SESSION['table'].">";
