@@ -13,12 +13,12 @@
 
 
    //Comprobar que te pasan todos los parámetros.
-   //$_GET['']
+   //$_GET['']7
    //http://ip/datarequest.php?AS=BCN&AA=GRD&DS=01-01-01&DA=04-01-01&IN=3&AD=3
 
 	 //connection to bd
 
-	 $link = mysqli_connect('localhost', 'root', ''); //poner datos del toni
+	 $link = mysqli_connect('10.1.17.3', 'vol', 'vol', 'aeroport'); //poner datos del toni
 			if (!$link) {
 			die('Could not connect: ' . mysqli_error($link));
 			}
@@ -26,12 +26,8 @@
 
 
 	//echo "---->".$_SESSION['basedades']."----->";
-	$db_selected = mysqli_select_db($link,cercador);
-	if (!$db_selected) {
-		die ('Can\'t use mydb : ' . mysqli_error($link));
-	}
 //Sentencia sql que demana els vols.
-	$sql="desc ".aeroportsdefinitiu;
+	$sql="desc ".vols;
 		//echo $sql;
 
 	$result = mysqli_query($link,$sql);
@@ -45,7 +41,7 @@
     echo "<?xml version='1.0'?>";
 	echo "\r\n";
 
-	echo "\t<!DOCTYPE ".aeroportsdefinitiu."[";
+	echo "\t<!DOCTYPE ".vols."[";
 	echo "\r\n";
 	echo "\t"."<!ELEMENT vol (";
 	$result=mysqli_query($link,$sql);
@@ -77,11 +73,11 @@
 
 	echo "]>";
 	echo "\r\n";
-	echo "<".$_SESSION['table'].">";
+	echo "<".vols.">";
 	echo "\r\n";
 
 	//inserció dels registres de la taula.
-	$sql="SELECT * FROM ".aeroportsdefinitiu;
+	$sql="SELECT * FROM ".vols;
 		//echo $sql;
 
 	$result = mysqli_query($link,$sql);
@@ -106,5 +102,6 @@
 		echo "\t"."</vol>";
 		echo "\r\n";
 	}
-	echo "</".$_SESSION['table'].">";
+	echo "</".vols.">";
+  //echo "</".$_SESSION['table'].">";
 ?>
