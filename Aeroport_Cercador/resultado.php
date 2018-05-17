@@ -28,11 +28,20 @@
 	$carpeta="./searching/".session_id();
   mkdir($carpeta);
 
-  $i = 1;
 
-  while ($i < $numrows) {
-  	$fichero = $carpeta.$_SESSION['ip']."/DataRequest.php";
-  	$nuevo_fichero = $carpeta."/vuelo".$i".xml";
+  $sqlConsulta = "SELECT * FROM ips";
+
+
+  //Haceoms un bucle while para coger el contenido de todos las aerolineas y las guardamos en difetentes archivos en xml, con nombre "VueloX.xml"
+  $result = mysqli_query($link,$sqlConsulta);
+  $i = 0;
+  while ($row = mysqli_fetch_array($result)) {
+		//$noms[$i] = $row[0];
+    //echo $row[$i];
+
+  	$fichero = $row[0];
+    $fichero=$fichero."/DataRequest.php";
+  	$nuevo_fichero = $carpeta."/vuelo".$i.".xml";
   	//echo $fichero."<br>";
   	//echo $nuevo_fichero."<br>";
   	$contingut=file_get_contents($fichero);
