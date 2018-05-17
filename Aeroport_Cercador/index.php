@@ -64,7 +64,7 @@ firstDay: 1
 <center>
 <?php
 //comencem la sessió
-//10.1.16.219
+//10.1.29.174
 session_start();
 
 	$link = mysqli_connect( '127.0.0.1', 'vols', 'vols','cercador');
@@ -84,7 +84,7 @@ session_start();
 		include("errorinclude.php");
 	}
 
-  echo "<div id='cajaBusqueda'><table><tr><td><form action= '../Aerolinea/DataRequest.php' method=GET>";
+  echo "<div id='cajaBusqueda'><table><tr><td><form action= '../Aeroport_Cercador/resultado.php' method=GET>";
 
 	echo "<div class='titSeccio'>Desde</div>";
   echo "<select name=AS>";

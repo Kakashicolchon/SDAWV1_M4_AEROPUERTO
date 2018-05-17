@@ -6,7 +6,7 @@
 
 	 error_reporting(E_PARSE |E_ERROR);
    header("Content-type: text/xml");
-	 header('Content-Disposition: attachment; filename='.$_SESSION['basedades'].'|'.$_SESSION['table'].'|'.'AmbDades'.'.xml');
+	 header('Content-Disposition: attachment; filename='.'Aerolinea'.'.xml');
 	 header('Pragma:no-cache');
 	 readfile("StructureOnly.csv");
 
@@ -22,7 +22,7 @@
 //SELECT * FROM vols WHERE AS='AAR' AND AA='ABD'Invalid query:
 	 //connection to bd
 
-	 $link = mysqli_connect('10.1.21.238', 'vol', 'vol', 'pinpoinairlines'); //poner datos del toni
+	 $link = mysqli_connect('10.1.28.127', 'vol', 'vol', 'pinpoinairlines'); //poner datos del toni
 			if (!$link) {
 			die('Could not connect: ' . mysqli_error($link));
 			}
@@ -81,8 +81,8 @@
 	echo "\r\n";
   //$_GET["AS"]
 	//inserció dels registres de la taula.
-	$sql="SELECT * FROM ".vols." WHERE AS1='".$_GET["AS"]."' AND AA='".$_GET["AA"]."'";
-		echo $sql;
+	$sql="SELECT * FROM ".vols." WHERE AS1='".$_GET["AS"]."' AND AA='".$_GET["AA"]."' AND DS='".$_GET["DS"]."' AND DA='".$GET["DA"]."' AND IN1='".$_GET["IN"]."' AND AD='".$_GET["AD"]."'";
+		//echo $sql;
 
 	$result = mysqli_query($link,$sql);
 	if (!$result) {
