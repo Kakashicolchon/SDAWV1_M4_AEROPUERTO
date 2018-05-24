@@ -82,7 +82,7 @@
   //$_GET["AS"]
 	//inserció dels registres de la taula.
 	$sql="SELECT * FROM ".vols." WHERE AS1='".$_GET["AS"]."' AND AA='".$_GET["AA"]."' AND DS='".$_GET["DS"]."' AND DA='".$GET["DA"]."' AND IN1='".$_GET["IN"]."' AND AD='".$_GET["AD"]."'";
-		//echo $sql;
+		echo $sql;
 
 	$result = mysqli_query($link,$sql);
 	if (!$result) {
@@ -95,7 +95,8 @@
 		echo "\r\n";
 
 		//escriurem tots els camps del registre
-
+    //poner tags normales
+    //<AS> </AS> en vez del bucle 
 		for ($i = 0; $i < $numc-1; $i++) {
 			echo "\t"."\t"."<".$noms[$i].">";
 			echo $row[$i];

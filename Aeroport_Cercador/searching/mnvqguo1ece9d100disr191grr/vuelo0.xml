@@ -9,11 +9,4 @@
 	<!ELEMENT AD (#PCDATA)>
 ]>
 <vols>
-SELECT * FROM vols WHERE AS1='ABD' AND AA='AEH' AND DS='2018-04-20' AND DA='2018-04-20' AND IN1='1' AND AD='1'	<vol>
-		<AS1>ABD</AS1>
-		<AA>AEH</AA>
-		<DS>2018-04-20</DS>
-		<DA>2018-04-20</DA>
-		<IN1>1</IN1>
-	</vol>
 </vols>

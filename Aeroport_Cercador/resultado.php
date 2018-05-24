@@ -65,7 +65,9 @@
     //echo $row[$i];
 
   	$fichero = $row[0];
-    $fichero=$fichero."/DataRequest.php?AS=$_SESSION[AS]&AA=$_SESSION[AA]&DS=$_SESSION[DS]&DA=$_SESSION[DA]&IN=$_SESSION[IN]&AD=$_SESSION[AD]";
+
+		$fichero=$fichero."/DataRequest.php?AS=$_SESSION[AS]&AA=$_SESSION[AA]&DS=$newDateDS&DA=$newDateDA&IN=$_SESSION[IN]&AD=$_SESSION[AD]";
+		//echo $fichero;
   	$nuevo_fichero = $carpeta."/vuelo".$i.".xml";
   	//echo $fichero."<br>";
   	//echo $nuevo_fichero."<br>";
