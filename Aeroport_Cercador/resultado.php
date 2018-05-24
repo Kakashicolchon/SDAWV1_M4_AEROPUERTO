@@ -3,6 +3,12 @@
 //INICIEM LA SESSIO
 	session_start();
 
+	$link = mysqli_connect( '10.1.21.86', 'vols', 'vols','cercador');
+
+	if (!$link) {
+					include("errorinclude.php");
+				}
+
   $_SESSION['AS'] = $_GET["AS"];
   $_SESSION['AA'] = $_GET["AA"];
   $_SESSION['DS'] = $_GET["DS"];
@@ -14,18 +20,37 @@
   //Actualizamos el formato de la fecha para que sea compatible con el de la base de datos
   $originalDateDS = $_SESSION['DS'];
   $newDateDS = date("Y-m-d", strtotime($originalDateDS));
-  echo $newDateDS;
+  //echo $newDateDS;
   $originalDateDA = $_SESSION['DA'];
   $newDateDA = date("Y-m-d", strtotime($originalDateDA));
-  echo $newDateDA;
+  //echo $newDateDA;
 
 
   //Creamos una carpeta temporal "Searching" donde se guardarán las carpetas de cada persona que le haya dado a buscar(con nombre ID de la sesión) y allí guardamos
   //todos los XML resultado de la busqueda a los servicios Web "DataRequest.php" y luego los unimos en 1 solo XML, lo personalizamos con XLASDASD y lo enseñamos.
 
 
-	echo session_id();
+	//echo session_id();
 	$carpeta="./searching/".session_id();
+
+	//Funcion que se encarga de borrar un directorio recursivamente
+	function deleteDirectory($dir) {
+	    if(!$dh = @opendir($dir)) return;
+	    while (false !== ($current = readdir($dh))) {
+	        if($current != '.' && $current != '..') {
+	            //echo 'Se ha borrado el archivo '.$dir.'/'.$current.'<br/>';
+	            if (!@unlink($dir.'/'.$current))
+	                deleteDirectory($dir.'/'.$current);
+	        }
+	    }
+	    closedir($dh);
+	    //echo 'Se ha borrado el directorio '.$dir.'<br/>';
+	    @rmdir($dir);
+	}
+
+
+
+	deleteDirectory($carpeta);
   mkdir($carpeta);
 
 
@@ -40,11 +65,11 @@
     //echo $row[$i];
 
   	$fichero = $row[0];
-    $fichero=$fichero."/DataRequest.php";
+    $fichero=$fichero."/DataRequest.php?AS=$_SESSION[AS]&AA=$_SESSION[AA]&DS=$_SESSION[DS]&DA=$_SESSION[DA]&IN=$_SESSION[IN]&AD=$_SESSION[AD]";
   	$nuevo_fichero = $carpeta."/vuelo".$i.".xml";
   	//echo $fichero."<br>";
   	//echo $nuevo_fichero."<br>";
-  	$contingut=file_get_contents($fichero);
+  	$contingut=file_get_contents('http://'.$fichero);
   	//echo $contingut;
 
     //La "x" significa que abre el archivo sólo para escribirlo.

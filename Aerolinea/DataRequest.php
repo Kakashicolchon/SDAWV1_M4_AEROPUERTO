@@ -21,8 +21,8 @@
    //http://ip/datarequest.php?AS=BCN&AA=GRD&DS=01-01-01&DA=04-01-01&IN=3&AD=3
 //SELECT * FROM vols WHERE AS='AAR' AND AA='ABD'Invalid query:
 	 //connection to bd
-
-	 $link = mysqli_connect('10.1.28.127', 'vol', 'vol', 'pinpoinairlines'); //poner datos del toni
+                          //poner ip del toni
+	 $link = mysqli_connect('127.0.0.1', 'vol', 'vol', 'pinpoinairlines'); //poner datos del toni
 			if (!$link) {
 			die('Could not connect: ' . mysqli_error($link));
 			}
