@@ -81,10 +81,37 @@
     $i++;
   }
 
-
-
 		//Ara crearem un arxiu on unirem tots els vols i els mostrarem a l'usuari.
+		//funcion file_exists(nombre);
+		//
+		$carpetaTot="./searching/".session_id().'Resultat';
+		deleteDirectory($carpetaTot);
+		mkdir($carpetaTot);
+		$fitxerTot=fopen($carpetaTot.'/resultat.xml',"x");
 
-
+		$j = 0;
+		while ($j<$i) {
+			//código que abre el fichero
+			echo "entré hay ficheroooos";
+			$file = fopen('./searching/'.session_id().'/vuelo'.$j.'.xml', "r");
+			$j++;
+			$search='<vols>';
+			while (! feof($file)) {
+				echo "entré en el archivito willy";
+				//leer hasta encontrar <vols>
+				$line = fgets($file);
+				if ($line===$search) {
+					//strcmp($line, "<vols>" !==FALSE)
+					echo "entré en el if, encontré el tag vols";
+					while (strcasecmp($line, "</vols>") !== 0) {
+						echo "estoy escribiendo las lineas hostia";
+						fwrite($fitxerTot,fgets($file));
+						//fgets($file). "<br />";
+					}
+				}
+			}
+			fclose($file);
+			fclose($fitxerTot);
+		}
 
 ?>
