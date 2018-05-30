@@ -81,8 +81,8 @@
 	echo "\r\n";
   //$_GET["AS"]
 	//inserció dels registres de la taula.
-	$sql="SELECT * FROM ".vols." WHERE AS1='".$_GET["AS"]."' AND AA='".$_GET["AA"]."' AND DS='".$_GET["DS"]."' AND DA='".$GET["DA"]."' AND IN1='".$_GET["IN"]."' AND AD='".$_GET["AD"]."'";
-		echo $sql;
+	$sql="SELECT * FROM ".vols." WHERE AS1='".$_GET["AS"]."' AND AA='".$_GET["AA"]."' AND DS='".$_GET["DS"]."' AND DA='".$_GET["DA"]."' AND IN1='".$_GET["IN"]."' AND AD='".$_GET["AD"]."'";
+	//echo $sql;
 
 	$result = mysqli_query($link,$sql);
 	if (!$result) {
@@ -95,14 +95,31 @@
 		echo "\r\n";
 
 		//escriurem tots els camps del registre
-    //poner tags normales
-    //<AS> </AS> en vez del bucle 
+
+    /*
 		for ($i = 0; $i < $numc-1; $i++) {
 			echo "\t"."\t"."<".$noms[$i].">";
 			echo $row[$i];
 			echo "</".$noms[$i].">";
 			echo "\r\n";
 		}
+    */
+
+		echo "\t"."\t"."<AS>".$row[0]."</AS>";
+		echo "\r\n";
+		echo "\t"."\t"."<AA>".$row[1]."</AA>";
+		echo "\r\n";
+		echo "\t"."\t"."<DS>".$row[2]."</DS>";
+		echo "\r\n";
+		echo "\t"."\t"."<DA>".$row[3]."</DA>";
+		echo "\r\n";
+		echo "\t"."\t"."<IN>".$row[4]."</IN>";
+		echo "\r\n";
+		echo "\t"."\t"."<AD>".$row[5]."</AD>";
+		echo "\r\n";
+
+
+
 
 		echo "\t"."</vol>";
 		echo "\r\n";
