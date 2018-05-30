@@ -81,4 +81,10 @@
     $i++;
   }
 
+
+
+		//Ara crearem un arxiu on unirem tots els vols i els mostrarem a l'usuari.
+
+
+
 ?>
