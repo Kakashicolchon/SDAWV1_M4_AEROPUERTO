@@ -23,6 +23,7 @@ AA,AS,DS,DA,HS,HA,D1,CO,IN,AD,PR {
   background:#fafafa;
   color:#000;
   font-family:verdana;
+  font-size:12px;
   width:590px !important;
   padding:0 10px 0 0px;
   height:30px;
@@ -58,10 +59,10 @@ CO::before {
 }
 
 IN::before {
-  Content:"Bitllets adult: "
+  Content:"Bitllets d'adult: "
 }
 
 
 AD::before {
-  Content:"Bitllets infantil: "
+  Content:"Bitllets infantils: "
 }

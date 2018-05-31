@@ -3,7 +3,7 @@
 //INICIEM LA SESSIO
 	session_start();
 
-	$link = mysqli_connect( '10.1.16.110', 'vols', 'vols','cercador');
+	$link = mysqli_connect( 'localhost', 'vols', 'vols','cercador');
 
 	if (!$link) {
 					include("errorinclude.php");
