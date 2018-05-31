@@ -1,0 +1,10 @@
+/*vols.css*/
+
+vols {
+  width:500px;
+  height:auto;
+  display:block;
+  color:#fafafa;
+  background:#000;
+  font-size:12px;
+}

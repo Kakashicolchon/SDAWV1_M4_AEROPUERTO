@@ -3,7 +3,7 @@
 //INICIEM LA SESSIO
 	session_start();
 
-	$link = mysqli_connect( '192.168.1.40', 'vols', 'vols','cercador');
+	$link = mysqli_connect( '10.1.16.110', 'vols', 'vols','cercador');
 
 	if (!$link) {
 					include("errorinclude.php");
@@ -82,36 +82,69 @@
   }
 
 		//Ara crearem un arxiu on unirem tots els vols i els mostrarem a l'usuari.
+
+
+
+
+
 		//funcion file_exists(nombre);
-		//
 		$carpetaTot="./searching/".session_id().'Resultat';
 		deleteDirectory($carpetaTot);
 		mkdir($carpetaTot);
 		$fitxerTot=fopen($carpetaTot.'/resultat.xml',"x");
 
+		//Fem el DTD de l'arxiu aeroportsdefini
+
+		$dtd= "<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet href='vols.css' type='text/css'?>
+<!DOCTYPE vols [
+<!ELEMENT vol (AS, AA, DS, DA, HS, HA, DU, CO, IN, AD, PR)>
+<!ELEMENT AS (#PCDATA)>
+<!ELEMENT AA (#PCDATA)>
+<!ELEMENT DS (#PCDATA)>
+<!ELEMENT DA (#PCDATA)>
+<!ELEMENT HS (#PCDATA)>
+<!ELEMENT HA (#PCDATA)>
+<!ELEMENT DU (#PCDATA)>
+<!ELEMENT CO (#PCDATA)>
+<!ELEMENT IN (#PCDATA)>
+<!ELEMENT AD (#PCDATA)>
+<!ELEMENT PR (#PCDATA)>
+]>
+<vols>
+		";
+		fputs($fitxerTot,$dtd);
 		$j = 0;
 		while ($j<$i) {
 			//código que abre el fichero
-			echo "entré hay ficheroooos";
 			$file = fopen('./searching/'.session_id().'/vuelo'.$j.'.xml', "r");
 			$j++;
-			$search='<vols>';
+			$search="<vols>";
+			$search2="</vols>";
 			while (! feof($file)) {
-				echo "entré en el archivito willy";
 				//leer hasta encontrar <vols>
 				$line = fgets($file);
-				if ($line===$search) {
-					//strcmp($line, "<vols>" !==FALSE)
-					echo "entré en el if, encontré el tag vols";
-					while (strcasecmp($line, "</vols>") !== 0) {
-						echo "estoy escribiendo las lineas hostia";
-						fwrite($fitxerTot,fgets($file));
+				if (strcmp(substr($line, 0, 6), $search) ==0) {
+					//strcmp($line, $search) === 0
+
+					while (strcmp(substr($line, 0, 7), $search2) !== 0  && !feof($file)) {
+						$line = fgets($file);
+						if (strcmp(substr($line, 0, 7), $search2) !== 0) {
+							fputs($fitxerTot,$line);
+						}
+
 						//fgets($file). "<br />";
 					}
 				}
 			}
 			fclose($file);
-			fclose($fitxerTot);
+
 		}
+		fputs($fitxerTot,"</vols>");
+		fclose($fitxerTot);
+		//borramos las carpetas de sesión
+		//deleteDirectory($carpetaTot);
+		//deleteDirectory($carpeta);
+		header('Location: ./searching/'.session_id().'Resultat/resultat.xml');
 
 ?>
