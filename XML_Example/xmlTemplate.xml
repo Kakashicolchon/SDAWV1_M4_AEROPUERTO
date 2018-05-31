@@ -1,6 +1,6 @@
 https://(ip)/datarequest.php?AS=BCN&AA=
-http://localhost/m4/SDAWV1_M4_AEROPUERTO/Aeroport_Cercador/resultado.php?AS=ABD&AA=AEH&DS=04%2F20%2F2018&DA=04%2F20%2F2018&IN=1&AD=1
-<?xml-stylesheet href='vols.css'?>
+http://10.1.16.110/m4/SDAWV1_M4_AEROPUERTO/Aeroport_Cercador/resultado.php?AS=ABD&AA=AEH&DS=04%2F20%2F2018&DA=04%2F20%2F2018&IN=1&AD=1
+
 
 
 

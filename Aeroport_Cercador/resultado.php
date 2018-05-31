@@ -96,7 +96,7 @@
 		//Fem el DTD de l'arxiu aeroportsdefini
 
 		$dtd= "<?xml version='1.0' encoding='UTF-8'?>
-<?xml-stylesheet href='vols.css' type='text/css'?>
+<?xml-stylesheet href='../../vols.css' type='text/css'?>
 <!DOCTYPE vols [
 <!ELEMENT vol (AS, AA, DS, DA, HS, HA, DU, CO, IN, AD, PR)>
 <!ELEMENT AS (#PCDATA)>

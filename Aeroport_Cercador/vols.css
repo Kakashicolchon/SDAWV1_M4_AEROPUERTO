@@ -1,10 +1,67 @@
 /*vols.css*/
 
 vols {
-  width:500px;
-  height:auto;
-  display:block;
-  color:#fafafa;
-  background:#000;
-  font-size:12px;
+  background:url(https://i.imgur.com/3AOydxb.jpg?1);
+}
+
+vol {
+    margin-top:30px;
+    width:600px;
+    height:auto;
+    margin-left:auto;
+    margin-right:auto;
+    background:rgba(255,255,255, 0.4);
+    color:#0a0a0a;
+    font-family:verdana;
+    padding:20px;
+    -webkit-background-clip: padding-box;
+		background-clip: padding-box;
+    display:block;
+  }
+
+AA,AS,DS,DA,HS,HA,D1,CO,IN,AD,PR {
+  background:#fafafa;
+  color:#000;
+  font-family:verdana;
+  width:590px !important;
+  padding:0 10px 0 0px;
+  height:30px;
+  display:inline-block;
+}
+
+AA::before,AS::before,DS::before,DA::before,HS::before,HA::before,D1::before,CO::before,IN::before,AD::before,PR::before {
+  color:#000;
+  text-align:left !important;
+  font-family:verdana;
+  padding:5px;
+  height:30px;
+  display:inline-block;
+}
+
+AS::before {
+  Content:"Aeroport de sortida: ";
+}
+AA::before {
+  Content:"Aeroport d'arribada: ";
+}
+
+DS::before {
+  Content:"Dia de sortida: "
+}
+
+DA::before {
+  Content:"Dia d'arribada: "
+}
+
+CO::before {
+  Content:"Companyia: "
+}
+
+IN::before {
+  Content:"Bitllets adult: "
+}
+
+
+AD::before {
+  Content:"Bitllets infantil: "
 }
