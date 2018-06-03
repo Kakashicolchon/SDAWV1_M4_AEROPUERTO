@@ -14,12 +14,4 @@
 	<!ELEMENT PR (#PCDATA)>
 ]>
 <vols>
-	<vol>
-		<AS>ABD</AS>
-		<AA>AEH</AA>
-		<DS>2018-04-20</DS>
-		<DA>2018-04-20</DA>
-		<IN>1</IN>
-		<AD>1</AD>
-	</vol>
 </vols>

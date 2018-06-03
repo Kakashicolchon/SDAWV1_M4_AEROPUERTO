@@ -24,7 +24,7 @@ firstDay: 1
     }
 
   #cajaBusqueda {
-    margin-top:150px;
+    margin-top:50px;
     width:auto;
     height:auto;
     background:rgba(255,255,255, 0.4);
@@ -56,15 +56,26 @@ firstDay: 1
   input {
     padding:6px;
   }
+
+  img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 25%;
+  }
 </style>
 </head>
 
 <body>
 
 <center>
+  <!-- Banner -->
+  <img src="https://i.imgur.com/Kdk3AjZ.png">
+
+
 <?php
 //comencem la sessió
-//10.1.29.174
+//81.40.220.250:8087
 session_start();
 
 	$link = mysqli_connect( '127.0.0.1', 'vols', 'vols','cercador');
@@ -72,7 +83,6 @@ session_start();
 	if (!$link) {
 					include("errorinclude.php");
 				}
-
 
 //formulari
 
