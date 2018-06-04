@@ -71,7 +71,7 @@
   	$nuevo_fichero = $carpeta."/vuelo".$i.".xml";
   	//echo $fichero."<br>";
   	//echo $nuevo_fichero."<br>";
-  	$contingut=file_get_contents('http://'.$fichero);
+		$contingut=file_get_contents('http://'.$fichero);
   	//echo $contingut;
 
     //La "x" significa que abre el archivo sólo para escribirlo.
@@ -79,6 +79,9 @@
   	fwrite($fitxer,$contingut);
   	fclose($fitxer);
     $i++;
+
+
+
   }
 
 		//Ara crearem un arxiu on unirem tots els vols i els mostrarem a l'usuari.
@@ -115,6 +118,7 @@
 		";
 		fputs($fitxerTot,$dtd);
 		$j = 0;
+		$z = 0;
 		while ($j<$i) {
 			//código que abre el fichero
 			$file = fopen('./searching/'.session_id().'/vuelo'.$j.'.xml', "r");
@@ -131,6 +135,7 @@
 						$line = fgets($file);
 						if (strcmp(substr($line, 0, 7), $search2) !== 0) {
 							fputs($fitxerTot,$line);
+							$z++;
 						}
 
 						//fgets($file). "<br />";
@@ -142,9 +147,18 @@
 		}
 		fputs($fitxerTot,"</vols>");
 		fclose($fitxerTot);
+		echo $z;
 		//borramos las carpetas de sesión
 		//deleteDirectory($carpetaTot);
 		//deleteDirectory($carpeta);
-		header('Location: ./searching/'.session_id().'Resultat/resultat.xml');
+
+		if ($z == 0) { //lineas de fichero 18, mostrar una pagina diciendo que no hay vuelos
+			header('Location: ./NoHiHaResultats.php');
+		}
+		else {
+			header('Location: ./searching/'.session_id().'Resultat/resultat.xml');
+		}
+
+
 
 ?>
